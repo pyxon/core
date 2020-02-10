@@ -4,13 +4,13 @@ from uuid import UUID
 from uuid import uuid4
 
 from micropy.core.modelling.command import AggregateLifecycle
-from micropy.core.proof_of_concept.food_ordering.coreapi.commands import CreateFoodCartCommand
-from micropy.core.proof_of_concept.food_ordering.coreapi.commands import DeselectProductCommand
-from micropy.core.proof_of_concept.food_ordering.coreapi.commands import SelectProductCommand
-from micropy.core.proof_of_concept.food_ordering.coreapi.events import FoodCartCreatedEvent
-from micropy.core.proof_of_concept.food_ordering.coreapi.events import ProductDeselectedEvent
-from micropy.core.proof_of_concept.food_ordering.coreapi.events import ProductSelectedEvent
-from micropy.core.proof_of_concept.food_ordering.coreapi.exceptions import ProductDeselectionException
+from proof_of_concept.food_ordering.coreapi.commands import CreateFoodCartCommand
+from proof_of_concept.food_ordering.coreapi.commands import DeselectProductCommand
+from proof_of_concept.food_ordering.coreapi.commands import SelectProductCommand
+from proof_of_concept.food_ordering.coreapi.events import FoodCartCreatedEvent
+from proof_of_concept.food_ordering.coreapi.events import ProductDeselectedEvent
+from proof_of_concept.food_ordering.coreapi.events import ProductSelectedEvent
+from proof_of_concept.food_ordering.coreapi.exceptions import ProductDeselectionException
 
 
 # @Aggregate
