@@ -17,7 +17,7 @@ from micropy.core.proof_of_concept.food_ordering.coreapi.exceptions import Produ
 class FoodCart:
 
     # @CommandHandler
-    # @AggregateIdentified('_food_cart_id')
+    # @AggregateIdentifier('_food_cart_id')
     def __init__(self, command: CreateFoodCartCommand):
         self._food_cart_id: UUID = None
         self._selected_products: MutableMapping[UUID, int] = None
