@@ -42,3 +42,7 @@ class FoodCart:
     # @EventSourcingHandler
     def on(self, event: ProductSelectedEvent):
         self._selected_products[event.product_id] += event.quantity
+
+    # @EventSourcingHandler
+    def on(self, event: ProductDeselectedEvent):
+        self._selected_products[event.product_id] -= event.quantity

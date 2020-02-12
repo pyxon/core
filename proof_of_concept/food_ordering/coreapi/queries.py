@@ -3,11 +3,11 @@ from uuid import UUID
 from dataclasses import dataclass
 
 
-@dataclass(frozen=True)
+@dataclass
 class FindFoodCartQuery:
     food_cart_id: UUID
 
 
-@dataclass(frozen=True)
+@dataclass
 class RetrieveProductOptionsQuery:
     pass

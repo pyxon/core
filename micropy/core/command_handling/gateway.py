@@ -1,0 +1,2 @@
+class CommandGateway:
+    pass

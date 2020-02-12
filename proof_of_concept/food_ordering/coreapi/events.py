@@ -3,25 +3,25 @@ from uuid import UUID
 from dataclasses import dataclass
 
 
-@dataclass(frozen=True)
+@dataclass
 class FoodCartCreatedEvent:
     food_cart_id: UUID
 
 
-@dataclass(frozen=True)
+@dataclass
 class ProductSelectedEvent:
     food_cart_id: UUID
     product_id: UUID
     quantity: int
 
 
-@dataclass(frozen=True)
+@dataclass
 class ProductDeselectedEvent:
     food_cart_id: UUID
     product_id: UUID
     quantity: int
 
 
-@dataclass(frozen=True)
+@dataclass
 class OrderConfirmedEvent:
     food_cart_id: UUID
