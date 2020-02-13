@@ -1,2 +1,3 @@
 class CommandGateway:
-    pass
+    def send(self, command):
+        pass

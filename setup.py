@@ -20,7 +20,7 @@ setuptools.setup(
     ],
     python_requires=">=3.7",
     install_requires=[
-        'persipy==1.0.0',
-        'winter==2.3.1',
+        "persipy==1.0.0",
+        "winter==2.3.1",
     ],
 )

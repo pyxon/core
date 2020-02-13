@@ -4,8 +4,9 @@ from dataclasses import dataclass
 
 
 @dataclass(frozen=True)
+# @routing_key('food_cart_id')
 class CreateFoodCartCommand:
-    pass
+    food_cart_id: UUID
 
 
 @dataclass(frozen=True)

@@ -14,6 +14,16 @@ class FoodCartView:
     # @ElementCollection
     products: MutableMapping[UUID, int]
 
+    def add_products(self, product_id: UUID, amount: int):
+        if product_id not in self.products:
+            self.products[product_id] = 0
+        self.products[product_id] += amount
+
+    def remove_products(self, product_id: UUID, amount: int):
+        self.products[product_id] -= amount
+        if self.products[product_id] == 0:
+            del self.products[product_id]
+
 
 class FoodCartViewRepository(CRUDRepository[FoodCartView, UUID], metaclass=ABCMeta):
     pass
