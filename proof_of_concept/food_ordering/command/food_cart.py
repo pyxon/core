@@ -29,11 +29,11 @@ class FoodCart:
         AggregateLifecycle.apply(FoodCartCreatedEvent(command.food_cart_id))
 
     # @CommandHandler
-    def handle(self, command: SelectProductCommand):
+    def handle_select_product(self, command: SelectProductCommand):
         AggregateLifecycle.apply(ProductSelectedEvent(self._food_cart_id, command.product_id, command.quantity))
 
     # @CommandHandler
-    def handle(self, command: DeselectProductCommand):
+    def handle_deselect_product(self, command: DeselectProductCommand):
         product_id = command.product_id
         quantity = command.quantity
 
@@ -49,7 +49,7 @@ class FoodCart:
         AggregateLifecycle.apply(ProductDeselectedEvent(self._food_cart_id, command.product_id, command.quantity))
 
     # @CommandHandler
-    def handle(self, command: ConfirmOrderCommand):
+    def handle_confirm_order(self, command: ConfirmOrderCommand):
         if self._confirmed:
             self._logger.warning("Cannot confirm a Food Cart order which is already confirmed")
             return
@@ -57,19 +57,19 @@ class FoodCart:
         AggregateLifecycle.apply(OrderConfirmedEvent(self._food_cart_id))
 
     # @EventSourcingHandler
-    def on(self, event: FoodCartCreatedEvent):
+    def on_food_cart_created(self, event: FoodCartCreatedEvent):
         self._food_cart_id = event.food_cart_id
         self._selected_products = defaultdict(int)
         self._confirmed = False
 
     # @EventSourcingHandler
-    def on(self, event: ProductSelectedEvent):
+    def on_product_selected(self, event: ProductSelectedEvent):
         self._selected_products[event.product_id] += event.quantity
 
     # @EventSourcingHandler
-    def on(self, event: ProductDeselectedEvent):
+    def on_product_deselected(self, event: ProductDeselectedEvent):
         self._selected_products[event.product_id] -= event.quantity
 
     # @EventSourcingHandler
-    def on(self, event: OrderConfirmedEvent):
+    def on_order_confirmed(self, event: OrderConfirmedEvent):
         self._confirmed = True

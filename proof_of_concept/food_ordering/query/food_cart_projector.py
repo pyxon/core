@@ -15,22 +15,22 @@ class FoodCartProjector:
         self._food_cart_view_repository = food_cart_view_repository
 
     # @EventHandler
-    def on(self, event: FoodCartCreatedEvent):
+    def on_food_cart_created(self, event: FoodCartCreatedEvent):
         food_cart_view = FoodCartView(event.food_cart_id, {})
         self._food_cart_view_repository.save(food_cart_view)
 
     # @EventHandler
-    def on(self, event: ProductSelectedEvent):
+    def on_product_selected(self, event: ProductSelectedEvent):
         food_cart_view = self._food_cart_view_repository.find_by_id(event.food_cart_id)
         if food_cart_view:
             food_cart_view.add_products(event.product_id, event.quantity)
 
     # @EventHandler
-    def on(self, event: ProductDeselectedEvent):
+    def on_product_deselected(self, event: ProductDeselectedEvent):
         food_cart_view = self._food_cart_view_repository.find_by_id(event.food_cart_id)
         if food_cart_view:
             food_cart_view.remove_products(event.product_id, event.quantity)
 
     # @QueryHandler
-    def handle(self, query: FindFoodCartQuery) -> Optional[FoodCartView]:
+    def handle_find_food_cart(self, query: FindFoodCartQuery) -> Optional[FoodCartView]:
         return self._food_cart_view_repository.find_by_id(query.food_cart_id)

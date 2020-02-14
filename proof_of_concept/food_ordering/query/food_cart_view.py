@@ -1,4 +1,3 @@
-from abc import ABCMeta
 from dataclasses import dataclass
 from typing import MutableMapping
 from uuid import UUID
@@ -25,5 +24,5 @@ class FoodCartView:
             del self.products[product_id]
 
 
-class FoodCartViewRepository(CRUDRepository[FoodCartView, UUID], metaclass=ABCMeta):
+class FoodCartViewRepository(CRUDRepository[FoodCartView, UUID]):
     pass
