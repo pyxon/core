@@ -1,5 +1,6 @@
 from typing import Awaitable
 from uuid import UUID
+from uuid import uuid4
 
 import winter
 
@@ -23,7 +24,7 @@ class FoodOrderingController:
 
     @winter.route_post("create/")
     def create_food_cart(self):
-        self._command_gateway.send(CreateFoodCartCommand())
+        self._command_gateway.send(CreateFoodCartCommand(uuid4()))
 
     @winter.route_post("{food_cart_id}/select/{product_id}/quantity/{quantity}/")
     def select_product(self, food_cart_id: UUID, product_id: UUID, quantity: int):
