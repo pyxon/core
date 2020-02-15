@@ -2,18 +2,17 @@ import logging
 from collections import defaultdict
 from typing import MutableMapping
 from uuid import UUID
-from uuid import uuid4
 
 from micropy.core.modelling.command import AggregateLifecycle
-from proof_of_concept.food_ordering.coreapi.commands import ConfirmOrderCommand
-from proof_of_concept.food_ordering.coreapi.commands import CreateFoodCartCommand
-from proof_of_concept.food_ordering.coreapi.commands import DeselectProductCommand
-from proof_of_concept.food_ordering.coreapi.commands import SelectProductCommand
-from proof_of_concept.food_ordering.coreapi.events import FoodCartCreatedEvent
-from proof_of_concept.food_ordering.coreapi.events import OrderConfirmedEvent
-from proof_of_concept.food_ordering.coreapi.events import ProductDeselectedEvent
-from proof_of_concept.food_ordering.coreapi.events import ProductSelectedEvent
-from proof_of_concept.food_ordering.coreapi.exceptions import ProductDeselectionException
+from proof_of_concept.food_ordering.shared.commands import ConfirmOrderCommand
+from proof_of_concept.food_ordering.shared.commands import CreateFoodCartCommand
+from proof_of_concept.food_ordering.shared.commands import DeselectProductCommand
+from proof_of_concept.food_ordering.shared.commands import SelectProductCommand
+from proof_of_concept.food_ordering.shared.events import FoodCartCreatedEvent
+from proof_of_concept.food_ordering.shared.events import OrderConfirmedEvent
+from proof_of_concept.food_ordering.shared.events import ProductDeselectedEvent
+from proof_of_concept.food_ordering.shared.events import ProductSelectedEvent
+from proof_of_concept.food_ordering.shared.exceptions import ProductDeselectionException
 
 
 # @Aggregate

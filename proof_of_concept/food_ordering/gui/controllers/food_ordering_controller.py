@@ -7,10 +7,10 @@ import winter
 from micropy.core.command_handling.gateway import CommandGateway
 from micropy.core.messaging.response_types import ResponseTypes
 from micropy.core.query_handling.gateway import QueryGateway
-from proof_of_concept.food_ordering.coreapi.commands import CreateFoodCartCommand
-from proof_of_concept.food_ordering.coreapi.commands import DeselectProductCommand
-from proof_of_concept.food_ordering.coreapi.commands import SelectProductCommand
-from proof_of_concept.food_ordering.coreapi.queries import FindFoodCartQuery
+from proof_of_concept.food_ordering.shared.commands import CreateFoodCartCommand
+from proof_of_concept.food_ordering.shared.commands import DeselectProductCommand
+from proof_of_concept.food_ordering.shared.commands import SelectProductCommand
+from proof_of_concept.food_ordering.shared.queries import FindFoodCartQuery
 from proof_of_concept.food_ordering.query.food_cart_view import FoodCartView
 
 

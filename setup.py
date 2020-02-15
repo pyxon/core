@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="micropy-core",
+    name="micropy",
     version="0.0.1",
     author="Pavel V. Pristupa",
     author_email="pristupa@gmail.com",
@@ -18,8 +18,9 @@ setuptools.setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent",
     ],
-    python_requires=">=3.7",
+    python_requires=">=3.6, <3.7",
     install_requires=[
+        "django==1.11.27",
         "persipy==1.0.0",
         "winter==2.3.1",
     ],
