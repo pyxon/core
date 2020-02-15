@@ -3,6 +3,7 @@ from uuid import UUID
 from uuid import uuid4
 
 import winter
+from injector import inject
 
 from micropy.core.command_handling.gateway import CommandGateway
 from micropy.core.messaging.response_types import ResponseTypes
@@ -19,6 +20,7 @@ from proof_of_concept.food_ordering.query.food_cart_view import FoodCartView
 @winter.no_authentication
 class FoodOrderingController:
 
+    @inject
     def __init__(self, command_gateway: CommandGateway, query_gateway: QueryGateway):
         self._command_gateway = command_gateway
         self._query_gateway = query_gateway

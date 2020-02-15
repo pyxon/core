@@ -21,6 +21,7 @@ setuptools.setup(
     python_requires=">=3.6, <3.7",
     install_requires=[
         "django==1.11.27",
+        "injector==0.15.0",
         "persipy==1.0.0",
         "winter==2.3.1",
     ],
