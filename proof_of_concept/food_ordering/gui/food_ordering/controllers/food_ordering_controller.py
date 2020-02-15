@@ -16,6 +16,7 @@ from proof_of_concept.food_ordering.query.food_cart_view import FoodCartView
 
 @winter.controller
 @winter.route("food_cart/")
+@winter.no_authentication
 class FoodOrderingController:
 
     def __init__(self, command_gateway: CommandGateway, query_gateway: QueryGateway):
