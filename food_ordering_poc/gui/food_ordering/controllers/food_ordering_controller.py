@@ -8,11 +8,11 @@ from injector import inject
 from micropy.core.command_handling.gateway import CommandGateway
 from micropy.core.messaging.response_types import ResponseTypes
 from micropy.core.query_handling.gateway import QueryGateway
-from proof_of_concept.food_ordering.shared.commands import CreateFoodCartCommand
-from proof_of_concept.food_ordering.shared.commands import DeselectProductCommand
-from proof_of_concept.food_ordering.shared.commands import SelectProductCommand
-from proof_of_concept.food_ordering.shared.queries import FindFoodCartQuery
-from proof_of_concept.food_ordering.query.food_cart_view import FoodCartView
+from food_ordering_poc.shared.commands import CreateFoodCartCommand
+from food_ordering_poc.shared.commands import DeselectProductCommand
+from food_ordering_poc.shared.commands import SelectProductCommand
+from food_ordering_poc.shared.queries import FindFoodCartQuery
+from food_ordering_poc.query.food_cart_view import FoodCartView
 
 
 @winter.controller

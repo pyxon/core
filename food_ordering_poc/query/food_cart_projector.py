@@ -1,11 +1,11 @@
 from typing import Optional
 
-from proof_of_concept.food_ordering.shared.events import FoodCartCreatedEvent
-from proof_of_concept.food_ordering.shared.events import ProductDeselectedEvent
-from proof_of_concept.food_ordering.shared.events import ProductSelectedEvent
-from proof_of_concept.food_ordering.shared.queries import FindFoodCartQuery
-from proof_of_concept.food_ordering.query.food_cart_view import FoodCartView
-from proof_of_concept.food_ordering.query.food_cart_view import FoodCartViewRepository
+from food_ordering_poc.shared.events import FoodCartCreatedEvent
+from food_ordering_poc.shared.events import ProductDeselectedEvent
+from food_ordering_poc.shared.events import ProductSelectedEvent
+from food_ordering_poc.shared.queries import FindFoodCartQuery
+from food_ordering_poc.query.food_cart_view import FoodCartView
+from food_ordering_poc.query.food_cart_view import FoodCartViewRepository
 
 
 # @Component

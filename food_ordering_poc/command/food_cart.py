@@ -4,15 +4,15 @@ from typing import MutableMapping
 from uuid import UUID
 
 from micropy.core.modelling.command import AggregateLifecycle
-from proof_of_concept.food_ordering.shared.commands import ConfirmOrderCommand
-from proof_of_concept.food_ordering.shared.commands import CreateFoodCartCommand
-from proof_of_concept.food_ordering.shared.commands import DeselectProductCommand
-from proof_of_concept.food_ordering.shared.commands import SelectProductCommand
-from proof_of_concept.food_ordering.shared.events import FoodCartCreatedEvent
-from proof_of_concept.food_ordering.shared.events import OrderConfirmedEvent
-from proof_of_concept.food_ordering.shared.events import ProductDeselectedEvent
-from proof_of_concept.food_ordering.shared.events import ProductSelectedEvent
-from proof_of_concept.food_ordering.shared.exceptions import ProductDeselectionException
+from food_ordering_poc.shared.commands import ConfirmOrderCommand
+from food_ordering_poc.shared.commands import CreateFoodCartCommand
+from food_ordering_poc.shared.commands import DeselectProductCommand
+from food_ordering_poc.shared.commands import SelectProductCommand
+from food_ordering_poc.shared.events import FoodCartCreatedEvent
+from food_ordering_poc.shared.events import OrderConfirmedEvent
+from food_ordering_poc.shared.events import ProductDeselectedEvent
+from food_ordering_poc.shared.events import ProductSelectedEvent
+from food_ordering_poc.shared.exceptions import ProductDeselectionException
 
 
 # @Aggregate

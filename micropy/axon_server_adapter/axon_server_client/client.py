@@ -5,8 +5,8 @@ from uuid import uuid4
 
 import grpc
 
-import control_pb2
-import control_pb2_grpc
+from build import control_pb2
+from build import control_pb2_grpc
 
 
 def print_stream(stream):
