@@ -26,8 +26,8 @@ class FoodOrderingController:
         self._query_gateway = query_gateway
 
     @winter.route_post("create/")
-    def create_food_cart(self):
-        self._command_gateway.send(CreateFoodCartCommand(uuid4()))
+    def create_food_cart(self) -> Awaitable[UUID]:
+        return self._command_gateway.send(CreateFoodCartCommand(uuid4()))
 
     @winter.route_post("{food_cart_id}/select/{product_id}/quantity/{quantity}/")
     def select_product(self, food_cart_id: UUID, product_id: UUID, quantity: int):
