@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 from winter.controller import set_controller_factory
 
-from lib.injection import get_injector
+from .injection import get_injector
 
 
 class FoodOrderingApplication(AppConfig):

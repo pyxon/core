@@ -1,4 +1,10 @@
 from injector import Injector
+from injector import Module
+
+
+class InjectorConfiguration(Module):
+    def configure(self, binder):
+        pass
 
 
 def get_injector() -> Injector:
