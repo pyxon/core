@@ -2,10 +2,10 @@ from injector import Injector
 from injector import Module
 from injector import singleton
 
-from micropy.axon_server_adapter.command_handling import CommandGatewayImpl
-from micropy.axon_server_adapter.query_handling import QueryGatewayImpl
-from micropy.core.command_handling.gateway import CommandGateway
-from micropy.core.query_handling.gateway import QueryGateway
+from pyxon.axon_server_adapter.command_handling import CommandGatewayImpl
+from pyxon.axon_server_adapter.query_handling import QueryGatewayImpl
+from pyxon.core.command_handling.gateway import CommandGateway
+from pyxon.core.query_handling.gateway import QueryGateway
 
 
 class InjectorConfiguration(Module):

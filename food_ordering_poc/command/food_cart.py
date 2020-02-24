@@ -4,9 +4,9 @@ from collections import defaultdict
 from typing import MutableMapping
 from uuid import UUID
 
-from micropy.core.command_handling.registry import AggregateCommandHandler
-from micropy.core.command_handling.registry import CommandHandlingRegistry
-from micropy.core.modelling.command import AggregateLifecycle
+from pyxon.core.command_handling.registry import AggregateCommandHandler
+from pyxon.core.command_handling.registry import CommandHandlingRegistry
+from pyxon.core.modelling.command import AggregateLifecycle
 from food_ordering_poc.shared.commands import ConfirmOrderCommand
 from food_ordering_poc.shared.commands import CreateFoodCartCommand
 from food_ordering_poc.shared.commands import DeselectProductCommand

@@ -1,7 +1,7 @@
 from injection import get_injector
-from micropy.axon_server_adapter.client import AxonServerClient
+from pyxon.axon_server_adapter.client.client import AxonServerClient
 
-from micropy.core.command_handling.registry import CommandHandlingRegistry
+from pyxon.core.command_handling.registry import CommandHandlingRegistry
 
 
 def autodiscover():

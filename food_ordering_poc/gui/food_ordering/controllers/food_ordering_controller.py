@@ -5,9 +5,9 @@ from uuid import uuid4
 import winter
 from injector import inject
 
-from micropy.core.command_handling.gateway import CommandGateway
-from micropy.core.messaging.response_types import ResponseTypes
-from micropy.core.query_handling.gateway import QueryGateway
+from pyxon.core.command_handling.gateway import CommandGateway
+from pyxon.core.messaging.response_types import ResponseTypes
+from pyxon.core.query_handling.gateway import QueryGateway
 from food_ordering_poc.shared.commands import CreateFoodCartCommand
 from food_ordering_poc.shared.commands import DeselectProductCommand
 from food_ordering_poc.shared.commands import SelectProductCommand

@@ -1,6 +1,6 @@
 from injector import inject
 
-from micropy.core.command_handling.gateway import CommandGateway
+from pyxon.core.command_handling.gateway import CommandGateway
 from ..client import AxonServerClient
 
 
