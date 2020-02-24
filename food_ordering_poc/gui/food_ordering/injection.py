@@ -1,5 +1,6 @@
 from injector import Injector
 from injector import Module
+from injector import singleton
 
 from micropy.axon_server_adapter.command_handling import CommandGatewayImpl
 from micropy.axon_server_adapter.query_handling import QueryGatewayImpl
@@ -9,8 +10,8 @@ from micropy.core.query_handling.gateway import QueryGateway
 
 class InjectorConfiguration(Module):
     def configure(self, binder):
-        binder.bind(CommandGateway, CommandGatewayImpl)
-        binder.bind(QueryGateway, QueryGatewayImpl)
+        binder.bind(CommandGateway, CommandGatewayImpl, scope=singleton)
+        binder.bind(QueryGateway, QueryGatewayImpl, scope=singleton)
 
 
 def get_injector() -> Injector:

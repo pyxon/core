@@ -1,8 +1,11 @@
+import inspect
 import logging
 from collections import defaultdict
 from typing import MutableMapping
 from uuid import UUID
 
+from micropy.core.command_handling.registry import AggregateCommandHandler
+from micropy.core.command_handling.registry import CommandHandlingRegistry
 from micropy.core.modelling.command import AggregateLifecycle
 from food_ordering_poc.shared.commands import ConfirmOrderCommand
 from food_ordering_poc.shared.commands import CreateFoodCartCommand
@@ -15,24 +18,59 @@ from food_ordering_poc.shared.events import ProductSelectedEvent
 from food_ordering_poc.shared.exceptions import ProductDeselectionException
 
 
-# @Aggregate
-class FoodCart:
-    _logger = logging.getLogger('FoodCart')
+def log(o):
+    return logging.getLogger(o.__class__.__name__)
 
-    # @CommandHandler
-    # @AggregateIdentifier('_food_cart_id')
+
+def aggregate(identifier: str):
+    def wrapper(cls):
+        print(f"%%% {cls.__name__} identifier is {identifier}")
+        for func_name in dir(cls):
+            func = getattr(cls, func_name)
+            if callable(func) and hasattr(func, "__handle_command__"):
+                CommandHandlingRegistry.register_command_handler(
+                    AggregateCommandHandler(cls, func),
+                )
+        return cls
+    return wrapper
+
+
+def command_handler(func):
+    annotations = inspect.getfullargspec(func).annotations
+    command_arg_name = next(
+        (
+            arg_name
+            for arg_name, arg_value in annotations.items()
+            if arg_name == "command"  # TODO: Analyze arg_value instead of arg_name
+        ),
+        None,
+    )
+    if command_arg_name is None:
+        raise Exception("command argument not found in command handler")
+    func.__handle_command__ = annotations[command_arg_name]
+    return func
+
+
+@aggregate(identifier="_food_cart_id")
+class FoodCart:
+
+    _food_cart_id: UUID
+    _selected_products: MutableMapping[UUID, int]
+    _confirmed: bool
+
+    @command_handler
     def __init__(self, command: CreateFoodCartCommand):
-        self._food_cart_id: UUID = None
-        self._selected_products: MutableMapping[UUID, int] = None
-        self._confirmed: bool = None
+        log(self).info("CreateFoodCartCommand handler")
         AggregateLifecycle.apply(FoodCartCreatedEvent(command.food_cart_id))
 
-    # @CommandHandler
+    @command_handler
     def handle_select_product(self, command: SelectProductCommand):
+        log(self).info("SelectProductCommand handler")
         AggregateLifecycle.apply(ProductSelectedEvent(self._food_cart_id, command.product_id, command.quantity))
 
-    # @CommandHandler
+    @command_handler
     def handle_deselect_product(self, command: DeselectProductCommand):
+        log(self).info("DeselectProductCommand handler")
         product_id = command.product_id
         quantity = command.quantity
 
@@ -47,10 +85,11 @@ class FoodCart:
 
         AggregateLifecycle.apply(ProductDeselectedEvent(self._food_cart_id, command.product_id, command.quantity))
 
-    # @CommandHandler
+    @command_handler
     def handle_confirm_order(self, command: ConfirmOrderCommand):
+        log(self).info("ConfirmOrderCommand handler")
         if self._confirmed:
-            self._logger.warning("Cannot confirm a Food Cart order which is already confirmed")
+            log(self).warning("Cannot confirm a Food Cart order which is already confirmed")
             return
 
         AggregateLifecycle.apply(OrderConfirmedEvent(self._food_cart_id))

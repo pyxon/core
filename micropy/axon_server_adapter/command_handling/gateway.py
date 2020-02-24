@@ -1,14 +1,15 @@
 from injector import inject
 
+from micropy.core.command_handling.gateway import CommandGateway
 from ..client import AxonServerClient
 
 
-class CommandGatewayImpl:
+class CommandGatewayImpl(CommandGateway):
 
     @inject
-    def __init__(self, axon_server_client: AxonServerClient):
-        self._client = axon_server_client
-        self._client.run('poc-command-gateway')
+    def __init__(self):
+        self._client = AxonServerClient('poc-command-gateway')
+        self._client.run()
 
     def send(self, command):
-        pass
+        self._client.dispatch_command(command)
